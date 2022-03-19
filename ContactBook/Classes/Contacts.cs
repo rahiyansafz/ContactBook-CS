@@ -20,10 +20,7 @@ public class Contacts : IContactOperations
 
     public void GetAll()
     {
-        foreach (var contact in ContactList)
-        {
-            Console.WriteLine($"Name : {contact.Name} Contact No : {contact.Number}");
-        }
+        foreach (var contact in ContactList) Console.WriteLine($"Name : {contact.Name} Contact No : {contact.Number}");
     }
 
     public void GetByName(string name)
