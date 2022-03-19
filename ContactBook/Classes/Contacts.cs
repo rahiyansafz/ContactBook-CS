@@ -26,7 +26,8 @@ public class Contacts : IContactOperations
     public void GetByName(string name)
     {
         var searchName = ContactList.Where(c => c.Name.ToLower().Contains(name)).ToList();
-        GetDetails(searchName);
+        if (searchName.Count < 1) Console.WriteLine("Contact Not Found! \n");
+        else GetDetails(searchName);
     }
 
     private static void PrintDetail(Contact contact)
