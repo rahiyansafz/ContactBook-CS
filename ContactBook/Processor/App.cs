@@ -10,7 +10,7 @@ public static class App
     {
 
         Contacts contacts = new();
-        WriteLine("Smart Contact Book!");
+        WriteLine("Smart ContactBook!");
 
     programStart:
         Output.Greeting();
@@ -31,7 +31,7 @@ public static class App
                     var success = int.TryParse(contactNumber, out var number);
                     if (contactNumber is null || !success)
                     {
-                        WriteLine("Contact Number Cannot be Zero Nor Empty.");
+                        WriteLine("Contact Number Cannot be Zero nor Empty.");
                         goto contactNumber;
                     }
 
@@ -40,7 +40,7 @@ public static class App
                     break;
 
                 case "2":
-                    Write("Search number: ");
+                    Write("Search by Number: ");
                     var searchNumber = int.Parse(ReadLine()!);
                     contacts.GetByNumber(searchNumber);
 
