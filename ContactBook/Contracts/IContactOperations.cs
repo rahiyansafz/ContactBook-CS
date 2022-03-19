@@ -1,17 +1,11 @@
 ﻿using ContactBook.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ContactBook.Classes
+namespace ContactBook.Contracts;
+
+public interface IContactOperations
 {
-    public interface IContactOperations
-    {
-        public void AddContact(Contact contact);
-        public void DisplayContact(string contactNo);
-        public void DisplayAllContact();
-        public void SearchByName(string name);
-    }
+    void Add(Contact contact);
+    void GetByNumber(int number);
+    void GetAll();
+    void GetByName(string name);
 }

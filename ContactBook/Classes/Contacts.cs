@@ -1,49 +1,45 @@
-﻿using ContactBook.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ContactBook.Contracts;
+using ContactBook.Models;
 
-namespace ContactBook.Classes
+namespace ContactBook.Classes;
+public class Contacts : IContactOperations
 {
-    public class Contacts : IContactOperations
+    private static readonly List<Contact> ContactList = new();
+
+    public void Add(Contact contact)
     {
-        private List<Contact> ContactList { get; set; } = new();
-        private static void GetAllItems(Contact contact)
-        {
-            Console.WriteLine($"Contact: {contact.Name} - {contact.Number} \n");
-        }
+        ContactList.Add(contact);
+    }
 
-        private static void GetDetails(List<Contact> contacts)
-        {
-            foreach (var contact in contacts)
-            {
-                GetAllItems(contact);
-            }
-        }
+    public void GetByNumber(int number)
+    {
+        var contact = ContactList.FirstOrDefault(c => c.Number == number);
+        if (contact is null) Console.WriteLine("Contact Number Not Found! \n");
+        else PrintDetail(contact);
+    }
 
-        public void AddContact(Contact contact)
+    public void GetAll()
+    {
+        foreach (var contact in ContactList)
         {
-            ContactList.Add(contact);
+            Console.WriteLine($"Name : {contact.Name} Contact No : {contact.Number}");
         }
+    }
 
-        public void DisplayContact(string contactNo)
-        {
-            var contact = ContactList.FirstOrDefault(c => c.Number == contactNo);
-            if (contact is null) Console.WriteLine("Contact Number Not Found! \n");
-            else GetAllItems(contact);
-        }
+    public void GetByName(string name)
+    {
+        var searchName = ContactList.Where(c => c.Name.ToLower().Contains(name)).ToList();
+        GetDetails(searchName);
+    }
 
-        public void DisplayAllContact()
-        {
-            GetDetails(ContactList);
-        }
+    private static void PrintDetail(Contact contact)
+    {
+        //string isFav = (contact.IsFavourite) ? "Contact Is Favourite!" : "Contact Is Not Favourite"; 
+        Console.WriteLine($"Contact: {contact.Name} - {contact.Number} \n");
+    }
 
-        public void SearchByName(string name)
-        {
-            var searchName = ContactList.Where(c => c.Name.Contains(name)).ToList();
-            GetDetails(searchName);
-        }
+    private static void GetDetails(List<Contact> contacts)
+    {
+        foreach (var contact in contacts) PrintDetail(contact);
     }
 }

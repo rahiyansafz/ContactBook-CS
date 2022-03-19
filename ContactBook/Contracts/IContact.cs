@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace ContactBook.Contracts;
 
-namespace ContactBook.Contracts
+public interface IContact
 {
-    public interface IContact
-    {
-        public string Name { get; set; }
-        public string Number { get; set; }
-        public bool IsFavourite { get; set; }
-    }
+    public string Name { get; set; }
+
+    public int Number { get; set; }
+    //public bool IsFavourite { get; set; }
 }
