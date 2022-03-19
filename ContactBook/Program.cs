@@ -2,13 +2,8 @@
 using ContactBook.Models;
 
 Console.WriteLine("Smart Contact Book! \n");
-Console.WriteLine("Select Operation: \n");
 
-Console.WriteLine("1. Add Contact");
-Console.WriteLine("2. Search Contact by Number");
-Console.WriteLine("3. View All Contacts");
-Console.WriteLine("4. Search Contact by a Given Name");
-Console.WriteLine("x. Exit \n");
+Output.Greeting();
 
 var userInput = Console.ReadLine();
 
@@ -54,6 +49,7 @@ while (true)
             Console.WriteLine("Select a Valid Operation \n");
             break;
     }
+    Output.Greeting();
     Console.WriteLine("Select Operation Again? \n");
     userInput = Console.ReadLine();
 }
